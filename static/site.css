@@ -1,0 +1,88 @@
+:root {
+  --bg: #3d405b;
+  --color: #f4f1de;
+  --primary: #e07a5f;
+}
+body {
+  font-family: 'Noto Sans Mono', monospace;
+  width: 100dvw;
+  height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  /* justify-content: center; */
+  align-items: center;
+  background-color: var(--bg);
+  color: var(--color);
+}
+* {
+  font-family: inherit;
+}
+form {
+  display: flex;
+  flex-direction: column;
+  gap: .5em;
+}
+
+.input-group {
+  display: grid;
+  grid-template-columns: minmax(max-content, 1fr) 3fr;
+  gap: .5em;
+  align-items: center;
+}
+
+.button-group {
+  display: flex;
+  flex-direction: column;
+  gap: .5em;
+  justify-content: center;
+  align-items: center;
+}
+
+select, input, button {
+  padding: .4em .6em;
+  background-color: transparent;
+  color: inherit;
+  border: 1px solid currentColor;
+
+}
+
+select:focus, input:focus, button:focus {
+  outline: 1px solid var(--primary);
+  outline-offset: -1px;
+}
+
+select:hover, input:hover, button:hover {
+  box-shadow: 0 0 2px 0px currentColor;
+}
+
+section {
+  position: relative;
+  animation: moveUp .6s forwards, fadeIn .6s forwards;
+}
+nav {
+  display: flex;
+  gap: 1em;
+  justify-content: center;
+  align-items: center;
+}
+nav a {
+  padding: .4em .6em;
+  color: var(--color);
+  border: 1px solid currentColor;
+  text-decoration: none;
+}
+
+ nav a.active {
+  color: var(--color);
+  background-color: var(--primary);
+} 
+
+@keyframes moveUp {
+  0% { transform: translateY(2rem); }
+  100% { transform: translateY(0); }
+}
+
+@keyframes fadeIn {
+  0% { opacity: 0;}
+  100% { opacity: 1;}
+}

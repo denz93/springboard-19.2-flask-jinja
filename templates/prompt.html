@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block header %}
+  <h1>{% block title %}Prompt{% endblock %}</h1>
+{% endblock %}
+
+{% block content %}
+<section>
+
+  <form method="POST" action="/story/{{ storyId }}">
+    {% for prompt in story.prompts %}
+    <div class="input-group">
+      <label>{{ prompt }}</label>
+      <input name="{{ prompt }}" required pattern="[a-z]{3,}" title="'{{prompt}}' should be at least 3 characters long and all lowercases">
+    </div>
+    {% endfor %}
+    <button type="submit">Submit</button>
+  </form>
+</section>
+{% endblock %}
+

@@ -4,8 +4,19 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>{% block title%} {% endblock %}</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='site.css' ) }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='home.css' ) }}">
+  <script src="{{ url_for('static', filename='home.js' ) }}"></script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Mono:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 </head>
 <body>
+  <nav class="{{active_navigation}}">
+    <a href="/" class="{{'active' if active_navigation == 'home'}}">Madlibs</a>
+    <a href="/new-story" class="{{'active' if active_navigation == 'new-story'}}">New story</a>
+  </nav>
   {% block header %}{% endblock %}
   {% block content %}{% endblock %}
 </body>

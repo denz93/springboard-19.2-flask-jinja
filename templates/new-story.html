@@ -1,0 +1,29 @@
+{% set active_navigation = 'new-story' %}
+{% extends 'base.html' %}
+
+{% block header %}
+  <h1>
+    {% block title %}
+      Create Your Own Story
+    {% endblock %}
+  </h1>
+{% endblock %}
+
+{% block content %}
+  <section>
+    <form action="/new-story" method="POST">
+      <div class="input-group">
+        <label>Words</label>
+        <input name="words" placeholder="Words seperate by comma" title="Ex: color,action,animal...">
+      </div>
+      <div class="input-group">
+        <label>Text</label>
+        <input name="text" placeholder="Template" title="There is {animal} that explored by {author}">
+      </div>
+      <div class="button-group">
+
+        <button type="submit">Submit</button>
+      </div>
+    </form>
+  </section>
+{% endblock %}

@@ -1,3 +1,4 @@
+{% set active_navigation = 'home' %}
 {% extends 'base.html' %}
 
 {% block header %}
@@ -5,14 +6,16 @@
 {% endblock %}
 
 {% block content %}
-  <form method="POST" action="/story">
-    {% for prompt in prompts %}
-    <div class="input-group">
-      <label>{{ prompt }}</label>
-      <input name="{{ prompt }}" required>
-    </div>
+<section>
+  <select id="story-select">
+    <option disabled value="" selected>Select your story</option>
+    {% for story in storyList %}
+      <option value="{{loop.index0}}">{{story.template}}</option>
     {% endfor %}
-    <button type="submit">Submit</button>
-  </form>
+  </select>
+  <button id="answer-prompt">Answer prompt</button>
+</section>
+
+
 {% endblock %}
 
