@@ -13,11 +13,15 @@ class StoryEncoder(json.JSONEncoder):
   
 def load_story_list_from_file(filename='story_list.json'):
   storyList = []
-  with open(filename) as f:
-    try:
-      storyList = json.load(f, object_hook = lambda dictData: Story(words=dictData['prompts'], text=dictData['template']))
-    except json.JSONDecodeError:
-      storyList = []
+  try:
+    with open(filename) as f:
+      try:
+        storyList = json.load(f, object_hook = lambda dictData: Story(words=dictData['prompts'], text=dictData['template']))
+      except json.JSONDecodeError:
+        storyList = []
+  except FileNotFoundError:
+    storyList = []
+
   return storyList
 
 def save_story_list_to_file(storyList, filename='story_list.json'):
